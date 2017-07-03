@@ -1,0 +1,15 @@
+{
+    "name": "formations/rabbitmq",
+    "description": "formation of rabbitmq - try to use php",
+    "type": "project",
+    "require": {
+        "php-amqplib/php-amqplib": "^2.6",
+        "ext-bcmath": "*"
+    },
+    "authors": [
+        {
+            "name": "Damien Gilbrin",
+            "email": "damien.gilbrin@tsi-payment.com"
+        }
+    ]
+}
