@@ -6,6 +6,11 @@
         "php-amqplib/php-amqplib": "^2.6",
         "ext-bcmath": "*"
     },
+    "autoload": {
+        "psr-4": {
+            "Training\\": "src/"
+        }
+    },
     "authors": [
         {
             "name": "Damien Gilbrin",
