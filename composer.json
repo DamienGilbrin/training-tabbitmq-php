@@ -1,6 +1,6 @@
 {
-    "name": "formations/rabbitmq",
-    "description": "formation of rabbitmq - try to use php",
+    "name": "training/rabbitmq",
+    "description": "training of rabbitmq with php",
     "type": "project",
     "require": {
         "php-amqplib/php-amqplib": "^2.6",
