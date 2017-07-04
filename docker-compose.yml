@@ -22,3 +22,4 @@ services:
       NAME: "rabbitmq1"
     volumes:
       - "./config/rabbitmq/enabled_plugins:/etc/rabbitmq/enabled_plugins"
+      - "./data/mnesia:/var/lib/rabbitmq/mnesia"
