@@ -6,6 +6,16 @@ COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 
 RUN apt-get update && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+
+ENV PHPREDIS_VERSION 3.0.0
+
+RUN mkdir -p /usr/src/php/ext/redis \
+    && curl -L https://github.com/phpredis/phpredis/archive/$PHPREDIS_VERSION.tar.gz | tar xvz -C /usr/src/php/ext/redis --strip 1 \
+    && echo 'redis' >> /usr/src/php-available-exts \
+    && docker-php-ext-install redis
+
+EXPOSE 9000
+
 RUN docker-php-ext-install bcmath
 
 RUN yes | pecl install xdebug \
