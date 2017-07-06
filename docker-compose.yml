@@ -1,5 +1,14 @@
 version: "3.0"
 services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "${EXTERNAL_PORT:-8085}:80"
+    volumes:
+      - "${PROJECT_ROOT_DIRECTORY:-.}:/var/www"
+      - "${PROJECT_ROOT_DIRECTORY:-.}/config/nginx:/etc/nginx/conf.d:ro"
+    depends_on:
+      - php-fpm
   php-fpm:
     build:
       context: ./config/php-fpm
@@ -10,6 +19,10 @@ services:
       - rabbitmq
     env_file:
       - .env
+  redis:
+      image: redis
+      ports:
+          - "6379"
   rabbitmq:
     image: "rabbitmq:3-management"
     hostname: "rabbit1"
@@ -23,3 +36,4 @@ services:
     volumes:
       - "./config/rabbitmq/enabled_plugins:/etc/rabbitmq/enabled_plugins"
       - "./data/mnesia:/var/lib/rabbitmq/mnesia"
+      - "./data/logs/rabbitmq:/var/log/rabbitmq"
